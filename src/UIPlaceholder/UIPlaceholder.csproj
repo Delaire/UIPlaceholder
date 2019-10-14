@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="PlaceholderSkeletonView.cs" />
+    <Compile Include="PlaceholderState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\UIPlaceholder.rd.xml" />
   </ItemGroup>
