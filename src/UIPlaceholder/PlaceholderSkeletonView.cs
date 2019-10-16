@@ -8,7 +8,7 @@ namespace UIPlaceholder
     {
         Storyboard myLoadingStoryboard { get; set; }
         public PlaceholderSkeletonView()
-        {
+        {            
             myLoadingStoryboard = new Storyboard();
             var blinkAnimation = new DoubleAnimation()
             {
