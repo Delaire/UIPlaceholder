@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UIPlaceholderSample.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,23 @@ namespace UIPlaceholderSample
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public MainPageViewModel ViewModel => this.DataContext as MainPageViewModel;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            Loaded += MainPage_Loaded;
+        }
+
+        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LoadDifferentStates();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LoadDifferentStates();
         }
     }
 }

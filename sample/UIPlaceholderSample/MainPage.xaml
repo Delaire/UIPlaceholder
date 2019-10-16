@@ -6,33 +6,129 @@
     xmlns:local="using:UIPlaceholderSample"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:UIPlaceholder"
+    xmlns:vm="using:UIPlaceholderSample.ViewModel"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid Background="DarkGoldenrod">
-        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-            <ui:PlaceholderSkeletonView
-                Width="120"
-                Height="120"
-                Margin="20"
-                Background="#ebebeb" />
-            <StackPanel Margin="20" Orientation="Vertical">
-                <ui:PlaceholderSkeletonView
-                    Width="190"
-                    Height="20"
-                    Margin="10"
-                    Background="#ebebeb" />
-                <ui:PlaceholderSkeletonView
-                    Width="150"
-                    Height="20"
-                    Margin="10"
-                    Background="#ebebeb" />
-                <ui:PlaceholderSkeletonView
-                    Width="120"
-                    Height="20"
-                    Margin="10"
-                    Background="#ebebeb" />
+    <Page.DataContext>
+        <vm:MainPageViewModel />
+    </Page.DataContext>
+
+
+    <StackPanel Background="DarkGoldenrod">
+        <Button
+            Margin="20"
+            HorizontalAlignment="Center"
+            Click="Button_Click"
+            Content="Restart Animation" />
+        <!--  PLACEHOLDER NO REPEAT  -->
+        <!--<Grid
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            ui:PlaceholderEx.CurrentPlaceholderState="{Binding CurrentState}">
+            <ui:PlaceholderEx.PlaceholderStateItems>
+                <ui:PlaceholderStateItem StateItemKey="Loading">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:PlaceholderSkeletonView
+                            Width="120"
+                            Height="120"
+                            Margin="20"
+                            Background="#ebebeb" />
+                        <StackPanel Margin="20" Orientation="Vertical">
+                            <ui:PlaceholderSkeletonView
+                                Width="190"
+                                Height="20"
+                                Margin="10"
+                                Background="#ebebeb" />
+                            <ui:PlaceholderSkeletonView
+                                Width="150"
+                                Height="20"
+                                Margin="10"
+                                Background="#ebebeb" />
+                            <ui:PlaceholderSkeletonView
+                                Width="120"
+                                Height="20"
+                                Margin="10"
+                                Background="#ebebeb" />
+                        </StackPanel>
+                    </StackPanel>
+                </ui:PlaceholderStateItem>
+            </ui:PlaceholderEx.PlaceholderStateItems>
+
+            <StackPanel Margin="50" Orientation="Horizontal">
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="Blue" />
+
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="White" />
+
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="Red" />
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>-->
+
+        <!--  TEMPLATE WITH REPEAT  DATATEMPLATE  -->
+        <Grid
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            ui:PlaceholderEx.CurrentPlaceholderState="{Binding CurrentState}">
+            <ui:PlaceholderEx.PlaceholderStateItems>
+                <ui:PlaceholderStateItem RepeatItem="3" StateItemKey="Loading">
+                    <ui:PlaceholderStateItem.PlaceholderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <ui:PlaceholderSkeletonView
+                                    Width="120"
+                                    Height="120"
+                                    Margin="20"
+                                    Background="#ebebeb" />
+                                <StackPanel Margin="20" Orientation="Vertical">
+                                    <ui:PlaceholderSkeletonView
+                                        Width="190"
+                                        Height="20"
+                                        Margin="10"
+                                        Background="#ebebeb" />
+                                    <ui:PlaceholderSkeletonView
+                                        Width="150"
+                                        Height="20"
+                                        Margin="10"
+                                        Background="#ebebeb" />
+                                    <ui:PlaceholderSkeletonView
+                                        Width="120"
+                                        Height="20"
+                                        Margin="10"
+                                        Background="#ebebeb" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ui:PlaceholderStateItem.PlaceholderTemplate>
+
+                </ui:PlaceholderStateItem>
+            </ui:PlaceholderEx.PlaceholderStateItems>
+
+
+            <StackPanel Margin="50" Orientation="Horizontal">
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="Blue" />
+
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="White" />
+
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="Red" />
+            </StackPanel>
+        </Grid>
+    </StackPanel>
 </Page>
