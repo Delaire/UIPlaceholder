@@ -21,7 +21,7 @@
             Click="Button_Click"
             Content="Restart Animation" />
         <!--  PLACEHOLDER NO REPEAT  -->
-        <!--<Grid
+        <Grid
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             ui:PlaceholderEx.CurrentPlaceholderState="{Binding CurrentState}">
@@ -70,7 +70,7 @@
                     Height="40"
                     Fill="Red" />
             </StackPanel>
-        </Grid>-->
+        </Grid>
 
         <!--  TEMPLATE WITH REPEAT  DATATEMPLATE  -->
         <Grid
