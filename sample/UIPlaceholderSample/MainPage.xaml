@@ -2,13 +2,41 @@
     x:Class="UIPlaceholderSample.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UIPlaceholderSample"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:UIPlaceholder"
+    xmlns:uiV2="using:UIPlaceholder"
     xmlns:vm="using:UIPlaceholderSample.ViewModel"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
+
+
+    <Page.Resources>
+        <DataTemplate x:Key="LoadingItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <ui:PlaceholderSkeletonView
+                    Width="20"
+                    Height="20"
+                    Margin="20"
+                    Background="#ebebeb" />
+
+                <ui:PlaceholderSkeletonView
+                    Width="40"
+                    Height="40"
+                    Margin="20"
+                    Background="#ebebeb" />
+
+                <ui:PlaceholderSkeletonView
+                    Width="60"
+                    Height="20"
+                    Margin="60"
+                    Background="#ebebeb" />
+
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 
     <Page.DataContext>
         <vm:MainPageViewModel />
@@ -21,11 +49,9 @@
             Click="Button_Click"
             Content="Restart Animation" />
         <!--  PLACEHOLDER NO REPEAT  -->
-        <Grid
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            ui:PlaceholderEx.CurrentPlaceholderState="{Binding CurrentState}">
-            <ui:PlaceholderEx.PlaceholderStateItems>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+            <!--  ui:PlaceholderEx.CurrentPlaceholderState="{Binding CurrentState}">  -->
+            <!--<ui:PlaceholderEx.PlaceholderStateItems>
                 <ui:PlaceholderStateItem StateItemKey="Loading">
                     <StackPanel Orientation="Horizontal">
                         <ui:PlaceholderSkeletonView
@@ -52,7 +78,7 @@
                         </StackPanel>
                     </StackPanel>
                 </ui:PlaceholderStateItem>
-            </ui:PlaceholderEx.PlaceholderStateItems>
+            </ui:PlaceholderEx.PlaceholderStateItems>-->
 
             <StackPanel Margin="50" Orientation="Horizontal">
                 <Rectangle
@@ -74,6 +100,7 @@
 
         <!--  TEMPLATE WITH REPEAT  DATATEMPLATE  -->
         <Grid
+            x:Name="Grid1"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             ui:PlaceholderEx.CurrentPlaceholderState="{Binding CurrentState}">
@@ -129,5 +156,68 @@
                     Fill="Red" />
             </StackPanel>
         </Grid>
+
+
+        <Grid
+            x:Name="Grid2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            uiV2:PlaceholderEx.CurrentPlaceholderState="{Binding CurrentState}">
+            <uiV2:PlaceholderEx.PlaceholderStateItems>
+                <uiV2:PlaceholderStateItem RepeatItem="4" StateItemKey="Loading">
+                    <uiV2:PlaceholderStateItem.PlaceholderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <uiV2:PlaceholderSkeletonView
+                                    Width="120"
+                                    Height="120"
+                                    Margin="20"
+                                    Background="Red" />
+                                <StackPanel Margin="20" Orientation="Vertical">
+                                    <uiV2:PlaceholderSkeletonView
+                                        Width="190"
+                                        Height="20"
+                                        Margin="10"
+                                        Background="Purple" />
+                                    <uiV2:PlaceholderSkeletonView
+                                        Width="150"
+                                        Height="20"
+                                        Margin="10"
+                                        Background="Green" />
+                                    <uiV2:PlaceholderSkeletonView
+                                        Width="120"
+                                        Height="20"
+                                        Margin="10"
+                                        Background="Orange" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </uiV2:PlaceholderStateItem.PlaceholderTemplate>
+
+                </uiV2:PlaceholderStateItem>
+            </uiV2:PlaceholderEx.PlaceholderStateItems>
+
+
+            <StackPanel Margin="50" Orientation="Horizontal">
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="Blue" />
+
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="White" />
+
+                <Rectangle
+                    Width="20"
+                    Height="40"
+                    Fill="Red" />
+            </StackPanel>
+        </Grid>
+
+
+        <controls:ItemsRepeater ItemTemplate="{StaticResource LoadingItemTemplate}" ItemsSource="{x:Bind Items}" />
+
     </StackPanel>
 </Page>
