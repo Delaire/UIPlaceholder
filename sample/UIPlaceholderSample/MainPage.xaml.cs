@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,10 +25,18 @@ namespace UIPlaceholderSample
     public sealed partial class MainPage : Page
     {
         public MainPageViewModel ViewModel => this.DataContext as MainPageViewModel;
-
+        public ObservableCollection<int> Items = new ObservableCollection<int>();
         public MainPage()
         {
             this.InitializeComponent();
+
+            //addign fake data
+            Items.Add(1);
+            Items.Add(2);
+            Items.Add(3);
+            Items.Add(4);
+            Items.Add(5);
+            Items.Add(6);
 
             Loaded += MainPage_Loaded;
         }

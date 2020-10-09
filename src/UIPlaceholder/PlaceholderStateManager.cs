@@ -27,7 +27,15 @@ namespace UIPlaceholder
             // Put the original content back in.
             foreach (var item in _savedContent)
             {
-                g.Children.Add(item);
+                try
+                {
+                    g.Children.Add(item);
+                }
+                catch (System.Exception)
+                {
+ 
+                }
+                
             }
         }
 

@@ -109,21 +109,11 @@ namespace UIPlaceholder
 
         internal static PlaceholderStateManager layoutManager { get; set; }
 
-        //  static readonly DependencyProperty LayoutControllerProperty =
-        //DependencyProperty.Register(
-        //    "PlaceholderManager",
-        //    typeof(PlaceholderStateManager),
-        //    typeof(PlaceholderEx),
-        //      new PropertyMetadata(new PlaceholderStateManager()
-        //      {
-        //          PlaceholderItems = null
-        //      },
-        //      null));
-
-        //  public static PlaceholderStateManager GetPlaceholderManager(DependencyObject b)
-        //  {
-        //      return (PlaceholderStateManager)b.GetValue(LayoutControllerProperty);
-        //  }
+ 
+        public static void ClearLayoutManager()
+        {
+            layoutManager = null;
+        }
 
 
     }
